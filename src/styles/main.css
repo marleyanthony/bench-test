@@ -1,4 +1,23 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+.header {
+  background-color: #098B8C;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 5rem;
+}
+
+.header__text {
+  color: #fff;
+  letter-spacing: 2px;
+}
+
 * {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;

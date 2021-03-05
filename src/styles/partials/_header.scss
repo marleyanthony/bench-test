@@ -1,3 +1,12 @@
 .header {
-  // background-color: $main-color;
+  background-color: $main-color;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 5rem;
+
+  &__text {
+    color: #fff;
+    letter-spacing: 2px;
+  }
 }
