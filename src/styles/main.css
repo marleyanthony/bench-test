@@ -18,11 +18,28 @@
   letter-spacing: 2px;
 }
 
+.transaction-table {
+  border: 1px solid red;
+  width: 90%;
+  margin: 2rem auto 0;
+}
+
+.transaction-table__labels {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (1fr)[4];
+      grid-template-columns: repeat(4, 1fr);
+}
+
 * {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   border: 0;
   margin: 0;
   font-family: 'Roboto', sans-serif;
+}
+
+.app {
+  background-color: #EFEDE8;
 }
 /*# sourceMappingURL=main.css.map */

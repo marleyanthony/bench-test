@@ -1,0 +1,10 @@
+.transaction-table {
+  border: 1px solid red;
+  width: 90%;
+  margin: 2rem auto 0;
+
+  &__labels {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
