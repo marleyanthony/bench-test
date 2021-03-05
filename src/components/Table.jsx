@@ -45,7 +45,6 @@ const Table = () => {
   }
 
 
-  // ! get total amount for payments and account deductions 
   const getTotalAmount = () => {
     transactionData.forEach((data) => {
       total.push(parseFloat(data.Amount, 10))
@@ -88,7 +87,8 @@ const Table = () => {
                                 ? 'transaction-table__info-row transaction-table__info-row--income'
                                 : 'transaction-table__info-row'
                             }
-                            key={index}>
+                            key={index + 1}
+                          >
                             <h2 className="transaction-table__date">{transaction.Date}</h2>
                             <h2 className="transaction-table__company">{titleCase(transaction.Company)}</h2>
                             <h2 className="transaction-table__account">
@@ -98,7 +98,13 @@ const Table = () => {
                                   : transaction.Ledger
                               }
                             </h2>
-                            <h2 className="transaction-table__amount">$ {transaction.Amount}</h2>
+                            <h2 className="transaction-table__amount">
+                              $ {
+                                numberWithCommas(
+                                  Math.abs(transaction.Amount).toFixed(2)
+                                )
+                              }
+                            </h2>
                           </div>
                         )
                       })
@@ -110,7 +116,7 @@ const Table = () => {
                     pageNumbers.map((page, index) => {
                       return (
                         <>
-                          <p className='transaction-table__page-number' key={index}>{page}</p>
+                          <p className='transaction-table__page-number' key={page}>{page}</p>
                         </>
                       )
                     })
