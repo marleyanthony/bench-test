@@ -11,20 +11,29 @@ const Table = () => {
   let total = [];
 
   // ! effect to update the total amount and get data 
-  // ! not fully working the way I'd expect but I would like to talk more about it 
+  // ! not fully working the way I'd expect but I would like to talk more about it
+  // ! after adding console.logs i'm finding the first time through, state is not properly set, so the total initially displays as zero
+  // ! not sure why that is happening but talking it out would help  
   useEffect(() => {
     axios
       .get(`https://resttest.bench.co/transactions/${pageNumber}.json`)
       .then((res) => {
         setTransactionData(res.data.transactions)
         setFetchingData(res.status === 200 ? false : true)
+        getTotalAmount()
       })
       .catch((error) => {
         error ? setError(true) : setError(false);
       })
-    getTotalAmount()
 
   }, [pageNumber])
+
+  const getTotalAmount = () => {
+    transactionData.forEach((data) => {
+      total.push(parseFloat(data.Amount, 10))
+    })
+    setTotalAmount(total)
+  }
 
   const pageNumberSelect = (e) => {
     setPageNumber(e.target.innerHTML);
@@ -42,15 +51,6 @@ const Table = () => {
       splitStr[i] = splitStr[i].charAt(0).toUpperCase() + splitStr[i].substring(1);
     }
     return splitStr.join(' ');
-  }
-
-
-  const getTotalAmount = () => {
-    transactionData.forEach((data) => {
-      total.push(parseFloat(data.Amount, 10))
-      console.log(total)
-      setTotalAmount(total)
-    })
   }
 
   return (
@@ -83,7 +83,7 @@ const Table = () => {
                         return (
                           <div className=
                             {
-                              transaction.Amount > 0
+                              transaction.Amount > 0 && !transaction.Ledger.includes('Expense')
                                 ? 'transaction-table__info-row transaction-table__info-row--income'
                                 : 'transaction-table__info-row'
                             }
