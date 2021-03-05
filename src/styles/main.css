@@ -55,6 +55,10 @@
   border-bottom: 0;
 }
 
+.transaction-table__info-row--income {
+  color: #098B8C;
+}
+
 .transaction-table__page-number {
   cursor: pointer;
   font-size: 2rem;

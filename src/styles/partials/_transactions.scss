@@ -28,6 +28,10 @@
     &:last-child {
       border-bottom: 0;
     }
+
+    &--income {
+      color: $main-color;
+    }
   }
 
   &__page-number {
