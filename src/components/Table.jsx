@@ -10,7 +10,8 @@ const Table = () => {
   const pageNumbers = [1, 2, 3, 4];
   let total = [];
 
-  // ! I am having an issue with this use effect. I want it to 
+  // ! effect to update the total amount and get data 
+  // ! not fully working the way I'd expect but I would like to talk more about it 
   useEffect(() => {
     axios
       .get(`https://resttest.bench.co/transactions/${pageNumber}.json`)
@@ -29,12 +30,12 @@ const Table = () => {
     setPageNumber(e.target.innerHTML);
   }
 
-  // ! this piece of code was obtained from stack overflow @ https://stackoverflow.com/questions/2901102/how-to-print-a-number-with-commas-as-thousands-separators-in-javascript
+  // ! this piece of code was obtained from stack overflow @ https://stackoverflow.com/questions/2901102/how-to-print-a-number-with-commas-as-thousands-separators-in-javascript to add number separator at the thousands position
   const numberWithCommas = (x) => {
     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   }
 
-  // !this piece of code was obtained from stack overflow @ https://stackoverflow.com/questions/32589197/how-can-i-capitalize-the-first-letter-of-each-word-in-a-string-using-javascript
+  // !this piece of code was obtained from stack overflow @ https://stackoverflow.com/questions/32589197/how-can-i-capitalize-the-first-letter-of-each-word-in-a-string-using-javascript to change text from all upper case to each letter capitalized 
   const titleCase = (str) => {
     var splitStr = str.toLowerCase().split(' ');
     for (var i = 0; i < splitStr.length; i++) {
@@ -44,7 +45,7 @@ const Table = () => {
   }
 
 
-
+  // ! get total amount for payments and account deductions 
   const getTotalAmount = () => {
     transactionData.forEach((data) => {
       total.push(parseFloat(data.Amount, 10))
@@ -74,7 +75,6 @@ const Table = () => {
                             .reduce((a, b) => a + b, 0)
                             .toFixed(2)
                         )
-                        // getTotalAmount()
                       }
                     </h2>
                   </div>
@@ -89,20 +89,16 @@ const Table = () => {
                                 : 'transaction-table__info-row'
                             }
                             key={index}>
-                            <h2 className="transaction-table__date">
+                            <h2 className="transaction-table__date">{transaction.Date}</h2>
+                            <h2 className="transaction-table__company">{titleCase(transaction.Company)}</h2>
+                            <h2 className="transaction-table__account">
                               {
-                                transaction.Date
+                                transaction.Ledger === ''
+                                  ? 'Payment'
+                                  : transaction.Ledger
                               }
                             </h2>
-                            <h2 className="transaction-table__company">
-                              {
-                                titleCase(transaction.Company)
-                              }
-                            </h2>
-                            <h2 className="transaction-table__account">{transaction.Ledger}</h2>
-                            <h2 className="transaction-table__amount">$ {
-                              transaction.Amount
-                            }</h2>
+                            <h2 className="transaction-table__amount">$ {transaction.Amount}</h2>
                           </div>
                         )
                       })
