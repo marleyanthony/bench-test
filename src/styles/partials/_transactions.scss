@@ -1,9 +1,9 @@
 .transaction-table {
-  border: 1px solid red;
   width: 90%;
   margin: 2rem auto 0;
   background-color: #fff;
   padding: 2rem;
+  box-shadow: 0px 0px 9px -3px rgba(0, 0, 0, 0.64);
 
   &__label-name,
   &__label-total {
@@ -20,10 +20,27 @@
   }
 
   &__info-row {
-    // border: 1px solid red;
     border-bottom: 1px solid rgb(192, 192, 192);
     display: grid;
     grid-template-columns: 1fr 2fr 2fr 1fr;
     padding: 1rem 0;
+
+    &:last-child {
+      border-bottom: 0;
+    }
+  }
+
+  &__page-number {
+    cursor: pointer;
+    font-size: 2rem;
+    margin: 0 2rem;
+    color: $main-color;
+  }
+
+  &__page-select {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2rem;
   }
 }

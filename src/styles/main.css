@@ -19,11 +19,12 @@
 }
 
 .transaction-table {
-  border: 1px solid red;
   width: 90%;
   margin: 2rem auto 0;
   background-color: #fff;
   padding: 2rem;
+  -webkit-box-shadow: 0px 0px 9px -3px rgba(0, 0, 0, 0.64);
+          box-shadow: 0px 0px 9px -3px rgba(0, 0, 0, 0.64);
 }
 
 .transaction-table__label-name, .transaction-table__label-total {
@@ -50,6 +51,30 @@
   padding: 1rem 0;
 }
 
+.transaction-table__info-row:last-child {
+  border-bottom: 0;
+}
+
+.transaction-table__page-number {
+  cursor: pointer;
+  font-size: 2rem;
+  margin: 0 2rem;
+  color: #098B8C;
+}
+
+.transaction-table__page-select {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-top: 2rem;
+}
+
 * {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
@@ -60,6 +85,6 @@
 
 .app {
   background-color: #EFEDE8;
-  height: 100vh;
+  padding-bottom: 10rem;
 }
 /*# sourceMappingURL=main.css.map */
