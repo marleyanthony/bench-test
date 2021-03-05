@@ -24,7 +24,22 @@ const Table = () => {
         <h2 className="transaction-table__label-total">$39,664.53</h2>
       </div>
       <div className="transaction-table__info">
-
+        {
+          transactionData.map((transaction, index) => {
+            return (
+              <div className="transaction-table__info-row" key={index}>
+                <h2 className="transaction-table__date">{
+                  // Date.parse(transaction.Date)
+                  // new Date(transaction.Date) 
+                  transaction.Date
+                }</h2>
+                <h2 className="transaction-table__company">{transaction.Company}</h2>
+                <h2 className="transaction-table__account">{transaction.Ledger}</h2>
+                <h2 className="transaction-table__amount">$ {transaction.Amount}</h2>
+              </div>
+            )
+          })
+        }
       </div>
     </section>
   )

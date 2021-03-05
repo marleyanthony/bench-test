@@ -2,9 +2,28 @@
   border: 1px solid red;
   width: 90%;
   margin: 2rem auto 0;
+  background-color: #fff;
+  padding: 2rem;
+
+  &__label-name,
+  &__label-total {
+    color: $main-color;
+  }
+
+  &__labels {
+    margin-bottom: 2rem;
+  }
 
   &__labels {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: 1fr 2fr 2fr 1fr;
+  }
+
+  &__info-row {
+    // border: 1px solid red;
+    border-bottom: 1px solid rgb(192, 192, 192);
+    display: grid;
+    grid-template-columns: 1fr 2fr 2fr 1fr;
+    padding: 1rem 0;
   }
 }
